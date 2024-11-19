@@ -12,9 +12,9 @@
       "types": "./dist/index.d.ts"
     },
     "./next": {
-      "import": "./dist/next/index.es.js",
-      "require": "./dist/next/index.js",
-      "types": "./dist/next/index.d.ts"
+      "import": "./next/index.es.js",
+      "require": "./next/index.js",
+      "types": "./next/index.d.ts"
     }
   },
   "scripts": {

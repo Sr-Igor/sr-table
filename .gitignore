@@ -1,5 +1,7 @@
 /node_modules
 /build
+/dist
+/next
 /.pnp
 .pnp.js
 .yarn/install-state.gz

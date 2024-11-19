@@ -7,7 +7,7 @@
     "declaration": true,
     "declarationMap": false,
     "emitDeclarationOnly": true,
-    "outDir": "./dist",
+    "outDir": ".",
     "rootDir": "./src",
     "strict": true,
     "moduleResolution": "node",

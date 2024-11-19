@@ -35,12 +35,12 @@ export default [
     input: "src/next/index.ts",
     output: [
       {
-        file: "dist/next/index.js",
+        file: "next/index.js",
         format: "cjs",
         sourcemap: true,
       },
       {
-        file: "dist/next/index.es.js",
+        file: "next/index.es.js",
         format: "es",
         sourcemap: true,
       },
@@ -68,7 +68,7 @@ export default [
   {
     input: "src/next/index.ts",
     output: {
-      file: "dist/next/index.d.ts",
+      file: "next/index.d.ts",
       format: "es",
     },
     plugins: [dts()],
