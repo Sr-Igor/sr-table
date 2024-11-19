@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sources":["../src/components/Trial/index.tsx"],"sourcesContent":["import React from \"react\";\n\nexport interface TrialProps {}\n\nexport default () => {\n  return (\n    <div>\n      <h1>Trial</h1>\n    </div>\n  );\n};\n"],"names":["React","createElement"],"mappings":"kDAIe,WACb,OACEA,EAAAC,cAAA,MAAA,KACED,EAAcC,cAAA,KAAA,KAAA,SAGnB"}
