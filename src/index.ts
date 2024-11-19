@@ -1,2 +1,4 @@
-export { default as Trial } from "./components/Trial";
-export type { TrialProps } from "./components/Trial";
+export { Table } from "./components/Table";
+export { ITableProps } from "./components/Table/types";
+
+export { TableProvider } from "./providers";
