@@ -20,9 +20,18 @@ export default [
         sourcemap: true,
       },
     ],
-    external: ["react", "react-dom", "styled-components"],
+    external: [
+      "react",
+      "react-dom",
+      "styled-components",
+      /^@mui\//, // Externaliza todos os pacotes MUI
+      "react/jsx-runtime",
+    ],
     plugins: [
-      resolve(),
+      resolve({
+        extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"], // Garante resolução correta
+        preferBuiltins: false,
+      }),
       commonjs(),
       typescript({
         tsconfig: "./tsconfig.json",
@@ -45,10 +54,20 @@ export default [
         sourcemap: true,
       },
     ],
-    external: ["react", "react-dom", "styled-components", "next/navigation"],
+    external: [
+      "react",
+      "react-dom",
+      "styled-components",
+      "next/navigation",
+      /^@mui\//,
+      "react/jsx-runtime",
+    ],
     plugins: [
       ignore(["next/navigation"]),
-      resolve(),
+      resolve({
+        extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
+        preferBuiltins: false,
+      }),
       commonjs(),
       typescript({
         tsconfig: "./tsconfig.json",

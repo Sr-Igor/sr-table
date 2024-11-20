@@ -1,5 +1,5 @@
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles/index.js";
+import CssBaseline from "@mui/material/CssBaseline/index.js";
 import theme from "./theme";
 
 export interface IMaterialProviderProps {
