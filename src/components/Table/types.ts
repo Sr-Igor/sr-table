@@ -1,4 +1,5 @@
 import { components } from "./Views";
+import { StatusColor } from "./Views/Status";
 import { DefaultTheme } from "styled-components";
 
 export type PrimitiveKeys<T> = T extends object ? keyof T : never;
@@ -26,11 +27,17 @@ export type Column<T extends { id: string }> = {
   lineType?: keyof typeof components;
   format?: (item: T) => string | number;
   image?: Image<T>;
+  minWidthToHide?: number;
   tooltip?: {
     title: (item: T) => string;
     style?: (item: T, theme: DefaultTheme) => React.CSSProperties;
   };
   textStyle?: (item: T, theme: DefaultTheme) => React.CSSProperties;
+  statusStyle?: (item: T) => {
+    label: string;
+    color: StatusColor;
+  };
+  customChildren?: (item: T) => React.ReactNode;
 };
 export interface ActionsProps<T> {
   item: T;
@@ -38,7 +45,6 @@ export interface ActionsProps<T> {
     title: string;
     onClick: (item: T) => void;
     hide?: (item: T) => boolean;
-    act?: "create" | "read" | "update" | "delete";
   }[];
   loading?: boolean;
 }
@@ -46,6 +52,7 @@ export interface ActionsProps<T> {
 export type Pagination = {
   page?: number;
   search?: string;
+  sortBy?: { key: string; order: "asc" | "desc" };
 };
 
 export interface ITableProps<T extends { id: string }> {
@@ -61,7 +68,10 @@ export interface ITableProps<T extends { id: string }> {
   actions?: ActionsProps<T>["actions"];
   setSelects?: (selects: string[]) => void;
   setPagination?: (pagination: Pagination) => void;
-  emptyImageProps?: any;
+  emptyImageProps?: React.HTMLAttributes<HTMLImageElement> & {
+    src?: string;
+    alt?: string;
+  };
   wrapperProps?: React.HTMLAttributes<HTMLDivElement>;
   onClickRow?: (item: T) => void;
 }
@@ -78,4 +88,8 @@ export interface IComposeProps<T> {
     style?: React.CSSProperties;
   };
   textStyle?: React.CSSProperties;
+  statusStyle: {
+    label?: string;
+    color?: StatusColor;
+  };
 }

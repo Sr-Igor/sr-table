@@ -19,25 +19,26 @@ export const theme = {
     },
   },
   colors: {
+    background: "#FFF",
     red: {
-      light: "",
-      strong: "",
+      light: "#fecaca",
+      strong: "#ef4444",
     },
     gray: {
-      light: "",
-      strong: "",
+      light: "#e5e7eb",
+      strong: "#1f2937",
     },
     yellow: {
-      light: "",
-      strong: "",
+      light: "#fef08a",
+      strong: "#eab308",
     },
     orange: {
-      light: "",
-      strong: "",
+      light: "#fed7aa",
+      strong: "#f97316",
     },
     green: {
-      light: "",
-      strong: "",
+      light: "#99f6e4",
+      strong: "#14b8a6",
     },
   },
   spacings: {

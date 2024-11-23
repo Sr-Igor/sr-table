@@ -72,6 +72,7 @@ export function ColCheckbox<T extends Readonly<{ id: string }>>({
           }}
         >
           <S.Th
+            $identifier={`table--column--stable--th`}
             key={`table-checkbox-stable-th`}
             className={"column table--column--stable"}
           >
@@ -95,6 +96,7 @@ export function ColCheckbox<T extends Readonly<{ id: string }>>({
             >
               <S.Td
                 $height={height}
+                $identifier={`table--column--stable`}
                 key={`table-checkbox-stable-${index}-td-${item?.id}`}
                 className={`table--column--stable`}
               >

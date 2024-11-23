@@ -27,6 +27,7 @@ export function ColActions<T extends { id: string }>({
       <S.Thead>
         <S.Tr $height={height}>
           <S.Th
+            $identifier={`table-actions-stable-th`}
             key={`table-actions-stable-th`}
             className={"column table--column--stable"}
           >
@@ -52,6 +53,7 @@ export function ColActions<T extends { id: string }>({
                 $height={height}
                 key={`table-actions-stable-${index}-td-${item?.id}`}
                 className={`table--column--stable`}
+                $identifier={`table--column--stable`}
               >
                 <Actions actions={actions} item={item} />
               </S.Td>

@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
-  height: 560px;
   width: 100%;
 `;
 
@@ -70,8 +69,12 @@ export const Tr = styled.tr<{ $height: number; $hover?: boolean }>`
   `}
 `;
 
-export const Th = styled.th<{ $width?: string }>`
-  ${({ theme, $width }) => css`
+export const Th = styled.th<{
+  $width?: string;
+  $identifier: string;
+  $break?: number;
+}>`
+  ${({ theme, $width, $identifier, $break }) => css`
     text-align: left;
     color: ${theme.colors.gray.strong};
     font-size: ${theme.font.size.xxsmall};
@@ -99,14 +102,41 @@ export const Th = styled.th<{ $width?: string }>`
     &:last-child {
       border-right: 1px solid ${theme.colors.gray.light};
     }
+
+    .cover {
+      display: flex;
+      align-items: center;
+      gap: ${theme.spacings.small};
+    }
+
+    &.usable {
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        opacity: 0.6;
+        background-color: ${theme.colors.gray.strong + "30"};
+      }
+    }
+
+    &.${$identifier} {
+      ${$break &&
+      css`
+        @media (max-width: ${$break}px) {
+          display: none;
+        }
+      `}
+    }
   `}
 `;
 
 export const Td = styled.td<{
   $width?: string;
   $height: number;
+  $identifier: string;
+  $break?: number;
 }>`
-  ${({ theme, $width, $height }) => css`
+  ${({ theme, $width, $height, $identifier, $break }) => css`
     position: relative;
     overflow: hidden;
     padding: ${theme.spacings.xxsmall} ${theme.spacings.xsmall};
@@ -116,6 +146,15 @@ export const Td = styled.td<{
 
     &:last-child {
       border-right: 1px solid ${theme.colors.gray.light};
+    }
+
+    &.${$identifier} {
+      ${$break &&
+      css`
+        @media (max-width: ${$break}px) {
+          display: none;
+        }
+      `}
     }
 
     a,

@@ -17,18 +17,27 @@ const GlobalStyles = createGlobalStyle`
 
      &::-webkit-scrollbar-thumb {
        border-radius: 10px;
-       background-color: ${theme.colors.gray.strong};
+       background-color: ${theme.colors.gray.light};
      }
 
      &::-webkit-scrollbar-track {
        border-radius: 10px;
-       background-color: ${theme.colors.gray.light};
+       background-color: ${theme.colors.gray.background};
      }
    }
  `}
 
   html {
     font-size: 62.5%;
+
+    button {
+      border: none;
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: none;
+    }
   }
 `;
 

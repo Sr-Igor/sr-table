@@ -1,5 +1,18 @@
 import styled, { css } from "styled-components";
 
+export const Box = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .size {
+    opacity: 0;
+    z-index: -1;
+  }
+`;
+
 export const Container = styled.label<{ $checked: boolean }>`
   ${({ theme, $checked }) => css`
     display: flex;
@@ -10,12 +23,13 @@ export const Container = styled.label<{ $checked: boolean }>`
     border-radius: 3px;
     border: 2px solid ${theme.colors.gray.light};
     cursor: pointer;
-    position: relative;
+    position: absolute;
+    background-color: ${theme.colors.background};
 
     ${$checked &&
     css`
-      border-color: ${theme.colors.red.strong};
-      background-color: ${theme.colors.red.strong};
+      border-color: ${theme.colors.green.strong};
+      background-color: ${theme.colors.green.strong};
     `}
 
     input {

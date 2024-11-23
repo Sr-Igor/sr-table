@@ -69,8 +69,9 @@ export const Root = styled.div<{
   $type: keyof typeof RootModifiers;
   $width?: string;
   $height: number;
+  $loading?: boolean;
 }>`
-  ${({ theme, $type, $height, $width }) => css`
+  ${({ theme, $type, $height, $width, $loading }) => css`
     position: relative;
     overflow: hidden;
     display: flex;
@@ -93,10 +94,15 @@ export const Root = styled.div<{
     p {
       font-size: ${theme.font.size.xxxsmall};
       color: ${theme.colors.gray.strong};
-      font-weight: 500;
+      font-weight: 600;
     }
 
     ${RootModifiers[$type](theme)}
+
+    ${$loading &&
+    css`
+      border-color: ${theme.colors.background};
+    `}
   `}
 `;
 

@@ -1,9 +1,17 @@
 import { ThemeProvider } from "styled-components";
 
-import { theme } from "../../styles/theme";
+import { Theme, theme as defaultTheme } from "../../styles/theme";
 import GlobalStyles from "../../styles/global";
 
-export const Provider = ({ children }: { children: React.ReactNode }) => {
+export interface IProviderProps {
+  children: React.ReactNode;
+  theme?: Theme;
+}
+
+export const Provider = ({
+  children,
+  theme = defaultTheme,
+}: IProviderProps) => {
   return (
     <span>
       <ThemeProvider theme={theme}>

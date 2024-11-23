@@ -1,32 +1,29 @@
 //Styles
 import * as S from "./styled";
 
-import { Label, labels } from "./status";
-
 //Types
 import { IComposeProps } from "../../types";
 
-export interface IStatusProps {
-  type: keyof typeof S.RootModifiers;
-}
+export type StatusColor = keyof typeof S.RootModifiers;
 
 export function Status<T>({
-  value = "inactive",
   width,
   height,
   loading,
+  statusStyle,
 }: Readonly<IComposeProps<T>>) {
-  const exists = Object.keys(labels).includes(`${value}`);
-
-  const status: Label = exists
-    ? labels[value]
-    : { label: "Inativo", color: "gray" };
+  const status = statusStyle;
 
   return (
-    <S.Root $type={status.color} $width={width} $height={height}>
+    <S.Root
+      $type={status?.color || "gray"}
+      $width={width}
+      $height={height}
+      $loading={loading}
+    >
       <S.Skt loading={loading} />
       <span className="point" />
-      <p>{status.label}</p>
+      <p>{status?.label || "Inativo"}</p>
     </S.Root>
   );
 }

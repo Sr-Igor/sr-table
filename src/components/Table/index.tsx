@@ -1,6 +1,6 @@
+/* eslint-disable jsx-a11y/alt-text */
 //Styles
 import * as S from "./styled";
-import { useTheme } from "styled-components";
 
 //React && Hooks
 import { useMemo, useState } from "react";
@@ -30,8 +30,6 @@ export function Table<T extends { id: string }>({
   pagination = { page: 1 },
   onClickRow,
 }: Readonly<ITableProps<T>>) {
-  const theme = useTheme();
-
   //Data manipulation
   const _LINE_HEIGHT = 30;
   const ld = Array.from({ length: 10 }).map(() => ({})) as T[];
@@ -74,6 +72,8 @@ export function Table<T extends { id: string }>({
               hover={onClickRow && hover}
               setHover={setHover}
               onClickRow={onClickRow}
+              pagination={pagination}
+              setPagination={setPagination}
             />
           )}
 
@@ -89,6 +89,8 @@ export function Table<T extends { id: string }>({
                 hover={onClickRow && hover}
                 setHover={setHover}
                 onClickRow={onClickRow}
+                pagination={pagination}
+                setPagination={setPagination}
               />
             </div>
           </S.Scrollable>
@@ -104,6 +106,8 @@ export function Table<T extends { id: string }>({
               hover={onClickRow && hover}
               setHover={setHover}
               onClickRow={onClickRow}
+              pagination={pagination}
+              setPagination={setPagination}
             />
           )}
 
@@ -121,9 +125,11 @@ export function Table<T extends { id: string }>({
         {/* Empty State */}
         {!loading && items.length <= 0 && (
           <S.Empty>
-            <div className="image--box">
-              <img {...emptyImageProps} />
-            </div>
+            {!!emptyImageProps && (
+              <div className="image--box">
+                <img {...emptyImageProps} />
+              </div>
+            )}
 
             <div>
               <h4>
@@ -144,7 +150,7 @@ export function Table<T extends { id: string }>({
       {!!setPagination && (
         <S.Footer>
           <p className="footer-total">
-            <strong>{count}</strong> itens na base de dados
+            Total <strong>{count}</strong>
           </p>
           <Pagination
             page={pagination.page || 1}

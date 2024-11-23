@@ -40,7 +40,7 @@ export function Actions<T>({ item, actions }: Readonly<ActionsProps<T>>) {
         }}
         sx={{
           ".MuiPaper-root": {
-            backgroundColor: "transparent",
+            backgroundColor: theme.colors.background,
             borderRadius: "8px",
           },
         }}

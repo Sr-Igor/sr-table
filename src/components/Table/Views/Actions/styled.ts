@@ -18,7 +18,7 @@ export const Content = styled.div`
       min-width: 180px;
       background-color: transparent;
       padding: 0 ${theme.spacings.xxsmall};
-      background-color: transparent;
+      background-color: ${theme.colors.background};
       z-index: 1;
 
       &:hover {
