@@ -19,7 +19,7 @@ export const theme = {
     },
   },
   colors: {
-    checkbox: "#99f6e4",
+    checkbox: "#14b8a6",
     loading: {
       light: "#f3f4f6",
       strong: "#e5e7eb",
