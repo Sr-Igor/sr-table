@@ -1,5 +1,7 @@
 //Styles
 import * as S from "../../styled";
+//Styles
+import { Skt } from "../../Views/Line/styled";
 import { useTheme } from "styled-components";
 
 //Components
@@ -117,10 +119,20 @@ export function ColGeneric<T extends { id: string }>({
               const textStyles = column?.textStyle?.(item, theme) || {};
               const statusStyles = column?.statusStyle?.(item) || {};
 
+              const isLineLoading = loadingLines.includes(item.id);
+              const isLoading = isLineLoading || loading;
+
               const Component = getComponent(column.lineType || "Line");
               const custom = column?.customChildren?.(item);
 
-              const isLineLoading = loadingLines.includes(item.id);
+              const CustomRender = () => {
+                return (
+                  <>
+                    <Skt loading={loading} />
+                    {custom}
+                  </>
+                );
+              };
 
               return (
                 <S.Td
@@ -131,7 +143,9 @@ export function ColGeneric<T extends { id: string }>({
                   $width={column.width}
                   $height={height}
                 >
-                  {custom || (
+                  {custom ? (
+                    <CustomRender />
+                  ) : (
                     <Component<T>
                       value={value}
                       image={
@@ -152,7 +166,7 @@ export function ColGeneric<T extends { id: string }>({
                       textStyle={textStyles}
                       statusStyle={statusStyles}
                       quantity={columns.length}
-                      loading={isLineLoading || loading}
+                      loading={isLoading}
                     />
                   )}
                 </S.Td>
