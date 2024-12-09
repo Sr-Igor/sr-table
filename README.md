@@ -112,10 +112,10 @@ import { TableProvider, Table } from "sr-table/next";
 | loadingLines    | String[]                               | Linhas especificas que estão em carregamento       | false    | []      |
 | actions         | ActionsProps<T>                        | Elementos na coluna de ação                        | false    | null    |
 | setSelects      | (id: string[] => void)                 | Função chamada ao selecionar checkbox              | false    | null    |
-| setPagination   | (pagination: Pagination => void)       | FUnção chamada ao alterar elementos da paginação   | false    | null    |
+| setPagination   | (pagination: Pagination => void)       | Função chamada ao alterar elementos da paginação   | false    | null    |
 | emptyImageProps | React.HTMLAttributes<HTMLImageElement> | Imagem exibida na tabela vazia                     | false    | null    |
 | wrapperProps    | React.HTMLAttributes<HTMLDivElement>   | Elemento root que engloba a tabela                 | false    | null    |
-| onClickRow      | (item: T) => void                      | FUnção chamada ao clicar em uma linha especifica   | false    | null    |
+| onClickRow      | (item: T) => void                      | Função chamada ao clicar em uma linha especifica   | false    | null    |
 
 #### Column<T extends { id: string }>
 
@@ -185,5 +185,19 @@ import { TableProvider, Table } from "sr-table/next";
 #### Licença
 
 Este projeto está licenciado sob a licença [ISC](LICENSE).
+
+---
+
+## Autor
+
+- **Igor Rezende**
+
+## Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir um pull request ou reportar problemas no repositório.
+
+## Contact
+
+- sr.igor.dev@gmail.com
 
 ---

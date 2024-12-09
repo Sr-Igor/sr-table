@@ -1,6 +1,6 @@
 {
   "name": "sr-table",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -39,7 +39,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/seu-usuario/my-react-library.git"
+    "url": "https://github.com/Sr-Igor/sr-table"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
