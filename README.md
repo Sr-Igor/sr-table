@@ -99,41 +99,41 @@ import { TableProvider, Table } from "sr-table/next";
 
 #### ITableProps<T extends { id: string }>
 
-| Prop            | Type                                   | Description                                        |
-| :-------------- | :------------------------------------- | :------------------------------------------------- |
-| data            | T[]                                    | Arrays dos dados que serão exibidos                |
-| count           | Number                                 | Quantidade total de items somando todas as páginas |
-| pages           | Number                                 | Quantidade de páginas que a tabela possui          |
-| visible         | Number                                 | Quantidade de items visível por página             |
-| loading         | Boolean                                | Se a tabela está em estado de carregamento         |
-| selects         | String[]                               | Linhas selecionadas pelo checkbox                  |
-| columns         | Column<T>[]                            | Estrutura das colunas                              |
-| pagination      | Pagination                             | Estado da paginação                                |
-| loadingLines    | String[]                               | Linhas especificas que estão em carregamento       |
-| actions         | ActionsProps<T>                        | Elementos na coluna de ação                        |
-| setSelects      | (id: string[] => void)                 | Função chamada ao selecionar checkbox              |
-| setPagination   | (pagination: Pagination => void)       | FUnção chamada ao alterar elementos da paginação   |
-| emptyImageProps | React.HTMLAttributes<HTMLImageElement> | Imagem exibida na tabela vazia                     |
-| wrapperProps    | React.HTMLAttributes<HTMLDivElement>   | Elemento root que engloba a tabela                 |
-| onClickRow      | (item: T) => void                      | FUnção chamada ao clicar em uma linha especifica   |
+| Prop            | Type                                   | Description                                        | Required | Default |
+| :-------------- | :------------------------------------- | :------------------------------------------------- | :------- | :------ |
+| data            | T[]                                    | Arrays dos dados que serão exibidos                | true     | []      |
+| count           | Number                                 | Quantidade total de items somando todas as páginas | false    | 0       |
+| pages           | Number                                 | Quantidade de páginas que a tabela possui          | false    | 0       |
+| visible         | Number                                 | Quantidade de items visível por página             | false    | 10      |
+| loading         | Boolean                                | Se a tabela está em estado de carregamento         | false    | false   |
+| selects         | String[]                               | Linhas selecionadas pelo checkbox                  | false    | []      |
+| columns         | Column<T>[]                            | Estrutura das colunas                              | true     | []      |
+| pagination      | Pagination                             | Estado da paginação                                | false    | null    |
+| loadingLines    | String[]                               | Linhas especificas que estão em carregamento       | false    | []      |
+| actions         | ActionsProps<T>                        | Elementos na coluna de ação                        | false    | null    |
+| setSelects      | (id: string[] => void)                 | Função chamada ao selecionar checkbox              | false    | null    |
+| setPagination   | (pagination: Pagination => void)       | FUnção chamada ao alterar elementos da paginação   | false    | null    |
+| emptyImageProps | React.HTMLAttributes<HTMLImageElement> | Imagem exibida na tabela vazia                     | false    | null    |
+| wrapperProps    | React.HTMLAttributes<HTMLDivElement>   | Elemento root que engloba a tabela                 | false    | null    |
+| onClickRow      | (item: T) => void                      | FUnção chamada ao clicar em uma linha especifica   | false    | null    |
 
 #### Column<T extends { id: string }>
 
-| Props          | Type                                                  | Description                                                               |
-| :------------- | :---------------------------------------------------- | :------------------------------------------------------------------------ |
-| title          | String                                                | Título da coluna                                                          |
-| width          | String                                                | Largura fixa da coluna                                                    |
-| sortBy         | KeyOf T or String or Boolean                          | Se a coluna pode ser ordenável e qual a key quando clicada                |
-| dataIndex      | KeyOf T                                               | Index de onde a tabela irá coletar o valor                                |
-| fixed          | left or right                                         | Define se a coluna se manter fixa em alguma posição                       |
-| lineType       | Line or Status                                        | Tipo da linha                                                             |
-| format         | (item: T) => string                                   | Formata o valor que sera exibido. OBS: sobrescreve dataIndex              |
-| image          | Image<T>                                              | Imagem exibida junto da linha                                             |
-| minWidthToHide | Number                                                | Oculta a coluna se o tamanho da tela for menor que o definido             |
-| tooltip        | Tooltip                                               | Exibe caixa de texto ao passar o mouse sobre o conteúdo da coluna         |
-| textStyle      | (item: T, theme: DefaultTheme) => React.CSSProperties | Define o estilo do texto                                                  |
-| statusStyle    | (item: T) => Status                                   | Define qual status será exibido (Funciona somente com lineStyle = Status) |
-| customChildren | (item: T) => React.ReactNode                          | Passa um componente customizado para ser exibido na coluna                |
+| Props          | Type                                                  | Description                                                               | Required | Default |
+| :------------- | :---------------------------------------------------- | :------------------------------------------------------------------------ | -------- | ------- |
+| title          | String                                                | Título da coluna                                                          | true     | ''      |
+| width          | String                                                | Largura fixa da coluna                                                    | false    | auto    |
+| sortBy         | KeyOf T or String or Boolean                          | Se a coluna pode ser ordenável e qual a key quando clicada                | false    | false   |
+| dataIndex      | KeyOf T                                               | Index de onde a tabela irá coletar o valor                                | true     | ''      |
+| fixed          | left or right                                         | Define se a coluna se manter fixa em alguma posição                       | false    | null    |
+| lineType       | Line or Status                                        | Tipo da linha                                                             | false    | Line    |
+| format         | (item: T) => string                                   | Formata o valor que sera exibido. OBS: sobrescreve dataIndex              | false    | null    |
+| image          | Image<T>                                              | Imagem exibida junto da linha                                             | false    | null    |
+| minWidthToHide | Number                                                | Oculta a coluna se o tamanho da tela for menor que o definido             | false    | null    |
+| tooltip        | Tooltip                                               | Exibe caixa de texto ao passar o mouse sobre o conteúdo da coluna         | false    | null    |
+| textStyle      | (item: T, theme: DefaultTheme) => React.CSSProperties | Define o estilo do texto                                                  | false    | null    |
+| statusStyle    | (item: T) => Status                                   | Define qual status será exibido (Funciona somente com lineStyle = Status) | false    | null    |
+| customChildren | (item: T) => React.ReactNode                          | Passa um componente customizado para ser exibido na coluna                | false    | null    |
 
 #### Pagination
 
