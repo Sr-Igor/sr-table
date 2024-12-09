@@ -1,12 +1,14 @@
-import { ChevronDown, ChevronUp } from "lucide-react";
+//Styles
 import * as S from "./styled";
+
+//Icons
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 export interface ISortProps {
   sortBy?: "asc" | "desc";
 }
 
 export const Sort = ({ sortBy }: ISortProps) => {
-  console.log(sortBy);
   return (
     <S.Box>
       <ChevronUp

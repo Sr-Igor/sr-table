@@ -59,20 +59,31 @@ export function ColGeneric<T extends { id: string }>({
                 $width={column.width}
                 $break={column.minWidthToHide}
                 onClick={
-                  !loading && pagination?.sortBy && setPagination
-                    ? () =>
+                  !loading &&
+                  pagination?.sortBy &&
+                  column?.sortBy &&
+                  setPagination
+                    ? () => {
+                        const isBoolean = typeof column.sortBy === "boolean";
+                        const sort = column.sortBy as any;
+
+                        const sortKey = isBoolean ? column.dataIndex : sort;
+
                         setPagination({
                           sortBy: {
-                            key: column.dataIndex,
+                            key: sortKey,
                             order: sortBy === "asc" ? "desc" : "asc",
                           },
-                        })
+                        });
+                      }
                     : undefined
                 }
               >
                 <div className={`cover`}>
                   {column.title}
-                  {pagination?.sortBy && <Sort sortBy={sortBy} />}
+                  {column?.sortBy && pagination?.sortBy && (
+                    <Sort sortBy={sortBy} />
+                  )}
                 </div>
               </S.Th>
             );

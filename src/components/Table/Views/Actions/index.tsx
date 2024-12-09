@@ -1,6 +1,6 @@
 //Styles
 import * as S from "./styled";
-import { useTheme } from "styled-components";
+import { ThemeProvider, useTheme } from "styled-components";
 
 //React && Hooks
 import { useMemo, useState } from "react";

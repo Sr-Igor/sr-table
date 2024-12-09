@@ -18,10 +18,6 @@ export const Table = styled.table`
     height: 100%;
     width: auto;
   }
-
-  &.table--stable {
-    width: 48px;
-  }
 `;
 
 export const Scrollable = styled.span`

@@ -1,6 +1,6 @@
 {
   "name": "sr-table",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -20,7 +20,10 @@
   "scripts": {
     "build": "rollup -c",
     "prepublishOnly": "npm run build",
-    "link": "link"
+    "link": "link",
+    "pub:patch": "commit -p && npm version patch && npm publish",
+    "pub:minor": "npm version minor && npm publish",
+    "pub:major": "npm version major && npm publish"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",

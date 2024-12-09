@@ -22,6 +22,7 @@ type Image<T> = {
 export type Column<T extends { id: string }> = {
   title: string;
   width?: string;
+  sortBy?: Keys<T> | "string" | boolean;
   dataIndex: Keys<T>;
   fixed?: "left" | "right";
   lineType?: keyof typeof components;

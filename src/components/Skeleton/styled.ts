@@ -14,8 +14,8 @@ const gradient = keyframes`
 
 const SkeletonModifier = {
   black: (theme: DefaultTheme) => css`
-    --color--1: ${theme.colors.gray.light};
-    --color--2: ${theme.colors.gray.strong};
+    --color--1: ${theme.colors.loading.light};
+    --color--2: ${theme.colors.loading.strong};
   `,
 };
 

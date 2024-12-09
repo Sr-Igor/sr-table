@@ -21,7 +21,7 @@ export const Container = styled.label<{ $checked: boolean }>`
     width: 16px;
     height: 16px;
     border-radius: 3px;
-    border: 2px solid ${theme.colors.gray.light};
+    border: 2px solid ${theme.colors.checkbox};
     cursor: pointer;
     position: absolute;
     background-color: ${theme.colors.background};
