@@ -21,15 +21,15 @@ export const Container = styled.label<{ $checked: boolean }>`
     width: 16px;
     height: 16px;
     border-radius: 3px;
-    border: 2px solid ${theme.colors.checkbox};
+    border: 2px solid ${theme.colors.gray.light};
     cursor: pointer;
     position: absolute;
     background-color: ${theme.colors.background};
 
     ${$checked &&
     css`
-      border-color: ${theme.colors.green.strong};
-      background-color: ${theme.colors.green.strong};
+      border-color: ${theme.colors.checkbox};
+      background-color: ${theme.colors.checkbox};
     `}
 
     input {

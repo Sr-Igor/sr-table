@@ -54,7 +54,7 @@ export function ColGeneric<T extends { id: string }>({
                 key={`table-column-${key}-tr-${column?.dataIndex}`}
                 $identifier={`table--column--${key}--${column.dataIndex}`}
                 className={`table--column--${key}--${column.dataIndex} ${
-                  pagination?.sortBy && "usable"
+                  pagination?.sortBy && column.sortBy && "usable"
                 }`}
                 $width={column.width}
                 $break={column.minWidthToHide}
