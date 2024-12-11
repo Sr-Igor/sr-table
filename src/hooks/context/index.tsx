@@ -13,7 +13,7 @@ export interface IThemeProviderProps {
 }
 
 export const InternalProvider = ({ children, theme }: IThemeProviderProps) => {
-  const usualTheme = theme || defaultTheme;
+  const usualTheme = defaultTheme;
   return (
     <ThemeContext.Provider value={usualTheme}>
       {children}

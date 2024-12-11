@@ -130,8 +130,8 @@ export function ColGeneric<T extends { id: string }>({
 
               const CustomRender = () => {
                 return (
-                  <Area>
-                    <Skt loading={isLoading} />
+                  <Area internal={internal}>
+                    <Skt loading={isLoading} internal={internal} />
                     {custom}
                   </Area>
                 );
