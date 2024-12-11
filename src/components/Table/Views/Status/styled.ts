@@ -2,65 +2,65 @@ import { Skeleton } from "../../../Skeleton";
 import styled, { DefaultTheme, css } from "styled-components";
 
 export const RootModifiers = {
-  green: (theme: DefaultTheme) => css`
-    background-color: ${theme.colors.green.light};
-    border-color: ${theme.colors.green.light};
+  green: (internal: DefaultTheme) => css`
+    background-color: ${internal.colors.green.light};
+    border-color: ${internal.colors.green.light};
 
     .point {
-      background-color: ${theme.colors.green.strong};
+      background-color: ${internal.colors.green.strong};
     }
 
     p {
-      color: ${theme.colors.green.strong};
+      color: ${internal.colors.green.strong};
     }
   `,
 
-  gray: (theme: DefaultTheme) => css`
+  gray: (internal: DefaultTheme) => css`
     background-color: transparent;
-    border-color: ${theme.colors.gray.light};
+    border-color: ${internal.colors.gray.light};
 
     .point {
-      background-color: ${theme.colors.gray.strong};
+      background-color: ${internal.colors.gray.strong};
     }
 
     p {
-      color: ${theme.colors.gray.strong};
+      color: ${internal.colors.gray.strong};
     }
   `,
-  yellow: (theme: DefaultTheme) => css`
-    background-color: ${theme.colors.yellow.light};
-    border-color: ${theme.colors.yellow.light};
+  yellow: (internal: DefaultTheme) => css`
+    background-color: ${internal.colors.yellow.light};
+    border-color: ${internal.colors.yellow.light};
 
     .point {
-      background-color: ${theme.colors.yellow.strong};
+      background-color: ${internal.colors.yellow.strong};
     }
 
     p {
-      color: ${theme.colors.yellow.strong};
+      color: ${internal.colors.yellow.strong};
     }
   `,
-  red: (theme: DefaultTheme) => css`
-    background-color: ${theme.colors.red.light};
-    border-color: ${theme.colors.red.light};
+  red: (internal: DefaultTheme) => css`
+    background-color: ${internal.colors.red.light};
+    border-color: ${internal.colors.red.light};
 
     .point {
-      background-color: ${theme.colors.red.strong};
+      background-color: ${internal.colors.red.strong};
     }
 
     p {
-      color: ${theme.colors.red.strong};
+      color: ${internal.colors.red.strong};
     }
   `,
-  orange: (theme: DefaultTheme) => css`
-    background-color: ${theme.colors.orange.light};
-    border-color: ${theme.colors.orange.light};
+  orange: (internal: DefaultTheme) => css`
+    background-color: ${internal.colors.orange.light};
+    border-color: ${internal.colors.orange.light};
 
     .point {
-      background-color: ${theme.colors.orange.strong};
+      background-color: ${internal.colors.orange.strong};
     }
 
     p {
-      color: ${theme.colors.orange.strong};
+      color: ${internal.colors.orange.strong};
     }
   `,
 };
@@ -71,7 +71,7 @@ export const Root = styled.div<{
   $height: number;
   $loading?: boolean;
 }>`
-  ${({ theme, $type, $height, $width, $loading }) => css`
+  ${({ internal, $type, $height, $width, $loading }) => css`
     position: relative;
     overflow: hidden;
     display: flex;
@@ -79,29 +79,29 @@ export const Root = styled.div<{
     justify-content: center;
     height: ${$height}px;
     width: ${$width || "100%"};
-    gap: ${theme.spacings.xxxsmall};
-    border: 1px solid ${theme.colors.gray.light};
-    padding: ${theme.spacings.xxsmall} ${theme.spacings.xsmall};
+    gap: ${internal.spacings.xxxsmall};
+    border: 1px solid ${internal.colors.gray.light};
+    padding: ${internal.spacings.xxsmall} ${internal.spacings.xsmall};
     border-radius: 5px;
 
     .point {
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background-color: ${theme.colors.gray.strong};
+      background-color: ${internal.colors.gray.strong};
     }
 
     p {
-      font-size: ${theme.font.size.xxxsmall};
-      color: ${theme.colors.gray.strong};
+      font-size: ${internal.font.size.xxxsmall};
+      color: ${internal.colors.gray.strong};
       font-weight: 600;
     }
 
-    ${RootModifiers[$type](theme)}
+    ${RootModifiers[$type](internal)}
 
     ${$loading &&
     css`
-      border-color: ${theme.colors.background};
+      border-color: ${internal.colors.background};
     `}
   `}
 `;

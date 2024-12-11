@@ -1,7 +1,12 @@
+// Providers
 import { Provider as Register } from "./register";
-import { Provider as Styled } from "../providers/styled";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { IMaterialProviderProps, Material } from "../providers/material";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+
+//Hooks
+import { InternalProvider } from "../hooks/context";
+
+//Types
 import { Theme } from "../styles/theme";
 
 export interface ITableProviderProps {
@@ -25,7 +30,7 @@ export const TableProvider = ({ children, theme }: ITableProviderProps) => {
   return (
     <Register>
       <MaterialSSR>
-        <Styled theme={theme}>{children}</Styled>
+        <InternalProvider theme={theme}>{children}</InternalProvider>
       </MaterialSSR>
     </Register>
   );

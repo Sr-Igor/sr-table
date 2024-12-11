@@ -1,6 +1,8 @@
 //Providers
-import { Provider as Styled } from "../providers/styled";
 import { Material } from "../providers/material";
+import { InternalProvider } from "../hooks/context";
+
+//Types
 import { Theme } from "../styles/theme";
 
 export interface ITableProviderProps {
@@ -11,7 +13,7 @@ export interface ITableProviderProps {
 export const TableProvider = ({ children, theme }: ITableProviderProps) => {
   return (
     <Material>
-      <Styled theme={theme}>{children}</Styled>
+      <InternalProvider theme={theme}>{children}</InternalProvider>
     </Material>
   );
 };

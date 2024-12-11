@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 import { Skeleton } from ".././../../Skeleton";
 
 export const Area = styled.a`
-  ${({ theme }) => css`
-    color: ${theme.colors.gray.strong};
-    font-size: ${theme.font.size.xsmall};
+  ${({ internal }) => css`
+    color: ${internal.colors.gray.strong};
+    font-size: ${internal.font.size.xsmall};
     height: 30px;
     background-color: transparent;
 
@@ -15,7 +15,7 @@ export const Area = styled.a`
     .infos {
       display: flex;
       align-items: center;
-      gap: ${theme.spacings.xxsmall};
+      gap: ${internal.spacings.xxsmall};
 
       .value {
         text-overflow: ellipsis;
@@ -31,20 +31,20 @@ export const Area = styled.a`
 `;
 
 export const Skt = styled(Skeleton)`
-  ${({ theme }) => css`
+  ${({ internal }) => css`
     position: initial;
-    border-radius: ${theme.border.radius};
+    border-radius: ${internal.border.radius};
   `}
 `;
 
 export const Avatar = styled.div`
-  ${({ theme }) => css`
+  ${({ internal }) => css`
     display: flex;
     align-items: center;
     justify-content: center;
     width: 24px;
     height: 24px;
-    background-color: ${theme.colors.gray.light};
+    background-color: ${internal.colors.gray.light};
     border-radius: 50%;
     position: relative;
     overflow: hidden;

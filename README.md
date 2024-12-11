@@ -5,7 +5,7 @@
 <div style="border: 1px solid #f5c6cb; padding: 10px; border-radius: 5px; color: red">
     ⚠️ Aviso
     <p>
-       Esse projeto utiliza MaterialUI e Styled-Components. Caso a prop `customChildren` seja passada e seu projeto também possua essas dependências, garanta de encapsulá-lo dentro do provider antes de passar o componente para evitar conflitos internos.
+       Esse projeto utiliza MaterialUI. Caso seu projeto utilize temas personalizados desse provider, verifique possíveis conflitos e a forma de corrigi-lós. Por favor, abra um PR com a solução encontrada ou relate um bug ao autor.
     </p>
 </div>
 

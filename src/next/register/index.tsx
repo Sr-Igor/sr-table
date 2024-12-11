@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-
+//Styles
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
+
+// React & Hooks
+import React, { useState } from "react";
 
 export const getUseServerInsertedHTML = () => {
   try {

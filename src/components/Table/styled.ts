@@ -21,7 +21,7 @@ export const Table = styled.table`
 `;
 
 export const Scrollable = styled.span`
-  ${({ theme }) => css`
+  ${({ internal }) => css`
     overflow: hidden;
     width: 100%;
 
@@ -35,7 +35,7 @@ export const Scrollable = styled.span`
       }
 
       &::-webkit-scrollbar-thumb {
-        background-color: ${theme.colors.gray.light};
+        background-color: ${internal.colors.gray.light};
         border-radius: 4px;
       }
     }
@@ -43,8 +43,8 @@ export const Scrollable = styled.span`
 `;
 
 export const Thead = styled.thead`
-  ${({ theme }) => css`
-    background-color: ${theme.colors.gray.light};
+  ${({ internal }) => css`
+    background-color: ${internal.colors.gray.light};
     width: 100%;
   `}
 `;
@@ -52,15 +52,15 @@ export const Thead = styled.thead`
 export const Tbody = styled.tbody``;
 
 export const Tr = styled.tr<{ $height: number; $hover?: boolean }>`
-  ${({ theme, $height, $hover }) => css`
-    border: 1px solid ${theme.colors.gray.light};
+  ${({ internal, $height, $hover }) => css`
+    border: 1px solid ${internal.colors.gray.light};
     overflow: hidden;
     height: ${$height}px;
-    border: 1px solid ${theme.colors.gray.light};
+    border: 1px solid ${internal.colors.gray.light};
 
     ${$hover &&
     css`
-      background-color: ${theme.colors.gray.light};
+      background-color: ${internal.colors.gray.light};
     `}
   `}
 `;
@@ -70,13 +70,13 @@ export const Th = styled.th<{
   $identifier: string;
   $break?: number;
 }>`
-  ${({ theme, $width, $identifier, $break }) => css`
+  ${({ internal, $width, $identifier, $break }) => css`
     text-align: left;
-    color: ${theme.colors.gray.strong};
-    font-size: ${theme.font.size.xxsmall};
+    color: ${internal.colors.gray.strong};
+    font-size: ${internal.font.size.xxsmall};
     font-weight: 600;
-    padding: ${theme.spacings.xxsmall} ${theme.spacings.xsmall};
-    border: 1px solid ${theme.colors.gray.light};
+    padding: ${internal.spacings.xxsmall} ${internal.spacings.xsmall};
+    border: 1px solid ${internal.colors.gray.light};
     border-right: none;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -96,13 +96,13 @@ export const Th = styled.th<{
     }
 
     &:last-child {
-      border-right: 1px solid ${theme.colors.gray.light};
+      border-right: 1px solid ${internal.colors.gray.light};
     }
 
     .cover {
       display: flex;
       align-items: center;
-      gap: ${theme.spacings.small};
+      gap: ${internal.spacings.small};
     }
 
     &.usable {
@@ -111,7 +111,7 @@ export const Th = styled.th<{
 
       &:hover {
         opacity: 0.6;
-        background-color: ${theme.colors.gray.strong + "30"};
+        background-color: ${internal.colors.gray.strong + "30"};
       }
     }
 
@@ -132,16 +132,16 @@ export const Td = styled.td<{
   $identifier: string;
   $break?: number;
 }>`
-  ${({ theme, $width, $height, $identifier, $break }) => css`
+  ${({ internal, $width, $height, $identifier, $break }) => css`
     position: relative;
     overflow: hidden;
-    padding: ${theme.spacings.xxsmall} ${theme.spacings.xsmall};
-    border: 1px solid ${theme.colors.gray.light};
+    padding: ${internal.spacings.xxsmall} ${internal.spacings.xsmall};
+    border: 1px solid ${internal.colors.gray.light};
     border-right: none;
     border-top: none;
 
     &:last-child {
-      border-right: 1px solid ${theme.colors.gray.light};
+      border-right: 1px solid ${internal.colors.gray.light};
     }
 
     &.${$identifier} {
@@ -155,8 +155,8 @@ export const Td = styled.td<{
 
     a,
     button {
-      color: ${theme.colors.gray.strong};
-      font-size: ${theme.font.size.xsmall};
+      color: ${internal.colors.gray.strong};
+      font-size: ${internal.font.size.xsmall};
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
@@ -185,20 +185,20 @@ export const Td = styled.td<{
     &.actions {
       height: 100%;
       display: flex;
-      gap: ${theme.spacings.xxsmall};
+      gap: ${internal.spacings.xxsmall};
     }
   `}
 `;
 
 export const Empty = styled.div`
-  ${({ theme }) => css`
+  ${({ internal }) => css`
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     width: 100%;
     position: relative;
-    gap: ${theme.spacings.small};
+    gap: ${internal.spacings.small};
 
     @media (max-width: 768px) {
       flex-direction: column;
@@ -220,36 +220,36 @@ export const Empty = styled.div`
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
-      color: ${theme.colors.gray.strong};
-      font-size: ${theme.font.size.small};
+      color: ${internal.colors.gray.strong};
+      font-size: ${internal.font.size.small};
 
       @media (max-width: 768px) {
         text-align: center;
-        font-size: ${theme.font.size.xsmall};
+        font-size: ${internal.font.size.xsmall};
       }
     }
 
     p {
-      color: ${theme.colors.gray.strong};
-      font-size: ${theme.font.size.xsmall};
+      color: ${internal.colors.gray.strong};
+      font-size: ${internal.font.size.xsmall};
 
       @media (max-width: 768px) {
-        font-size: ${theme.font.size.xxsmall};
+        font-size: ${internal.font.size.xxsmall};
       }
     }
   `}
 `;
 
 export const Footer = styled.div`
-  ${({ theme }) => css`
+  ${({ internal }) => css`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: ${theme.spacings.xsmall} ${theme.spacings.small};
+    padding: ${internal.spacings.xsmall} ${internal.spacings.small};
 
     p {
-      color: ${theme.colors.gray.strong};
-      font-size: ${theme.font.size.xxsmall};
+      color: ${internal.colors.gray.strong};
+      font-size: ${internal.font.size.xxsmall};
     }
   `}
 `;

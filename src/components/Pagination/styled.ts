@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components";
 
 export const Root = styled.div<{ $isLoading?: boolean }>`
-  ${({ theme, $isLoading }) => css`
+  ${({ internal, $isLoading }) => css`
     height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: ${theme.spacings.xxsmall};
-    font-size: ${theme.font.size.xsmall};
+    gap: ${internal.spacings.xxsmall};
+    font-size: ${internal.font.size.xsmall};
     opacity: ${$isLoading ? 0.5 : 1};
     pointer-events: ${$isLoading ? "none" : "all"};
 
@@ -26,12 +26,12 @@ export const Root = styled.div<{ $isLoading?: boolean }>`
     }
 
     p {
-      color: ${theme.colors.gray.strong};
+      color: ${internal.colors.gray.strong};
     }
 
     .current {
-      border: 1px solid ${theme.colors.gray.light};
-      border-radius: ${theme.border.radius};
+      border: 1px solid ${internal.colors.gray.light};
+      border-radius: ${internal.border.radius};
       display: flex;
       align-items: center;
       justify-content: center;

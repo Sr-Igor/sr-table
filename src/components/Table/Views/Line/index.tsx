@@ -1,6 +1,9 @@
 //Styles
 import * as S from "./styled";
 
+// Hooks
+import { useInternal } from "../../../../hooks/context";
+
 //Components
 import { Tooltip, TooltipProps, styled, tooltipClasses } from "@mui/material";
 
@@ -14,6 +17,8 @@ export function Line<T>({
   tooltip,
   textStyle,
 }: Readonly<IComposeProps<T>>) {
+  const internal = useInternal();
+
   const CustomWidthTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
   ))({
@@ -32,13 +37,13 @@ export function Line<T>({
   });
 
   return (
-    <S.Area>
-      <S.Skt loading={loading} />
+    <S.Area internal={internal}>
+      <S.Skt loading={loading} internal={internal} />
       {tooltip ? (
         <CustomWidthTooltip title={tooltip.title} placement="top-start">
           <div className="infos">
             {image && (
-              <S.Avatar>
+              <S.Avatar internal={internal}>
                 <img src={image.path} alt={image.alt} />
               </S.Avatar>
             )}
@@ -50,7 +55,7 @@ export function Line<T>({
       ) : (
         <div className="infos">
           {image && (
-            <S.Avatar>
+            <S.Avatar internal={internal}>
               <img src={image.path} alt={image.alt} />
             </S.Avatar>
           )}

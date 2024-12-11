@@ -1,14 +1,14 @@
 import styled, { css } from "styled-components";
 
 export const Content = styled.div`
-  ${({ theme }) => css`
+  ${({ internal }) => css`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    gap: ${theme.spacings.xxxsmall};
-    padding: ${theme.spacings.xxsmall} 0;
-    border-radius: ${theme.border.xxradius};
+    gap: ${internal.spacings.xxxsmall};
+    padding: ${internal.spacings.xxsmall} 0;
+    border-radius: ${internal.border.xxradius};
 
     button {
       display: flex;
@@ -17,8 +17,8 @@ export const Content = styled.div`
       height: 28px;
       min-width: 180px;
       background-color: transparent;
-      padding: 0 ${theme.spacings.xxsmall};
-      background-color: ${theme.colors.background};
+      padding: 0 ${internal.spacings.xxsmall};
+      background-color: ${internal.colors.background};
       z-index: 1;
 
       &:hover {
@@ -30,9 +30,9 @@ export const Content = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: ${theme.spacings.xxsmall} 0;
-      color: ${theme.colors.gray.strong};
-      font-size: ${theme.font.size.xxxsmall};
+      padding: ${internal.spacings.xxsmall} 0;
+      color: ${internal.colors.gray.strong};
+      font-size: ${internal.font.size.xxxsmall};
       width: 180px;
       cursor: not-allowed;
     }

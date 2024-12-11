@@ -1,5 +1,10 @@
+//Styles
 import * as S from "./styled";
 
+//Hooks
+import { useInternal } from "../../hooks/context";
+
+//Icons
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface IPaginationProps {
@@ -15,8 +20,10 @@ export const Pagination = ({
   setPage,
   loading,
 }: IPaginationProps) => {
+  const internal = useInternal();
+
   return (
-    <S.Root $isLoading={loading} data-testid="pagination">
+    <S.Root $isLoading={loading} data-testid="pagination" internal={internal}>
       <button
         disabled={page === 1 || loading}
         className="btn--pagination"

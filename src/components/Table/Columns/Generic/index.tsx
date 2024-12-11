@@ -1,8 +1,9 @@
 //Styles
 import * as S from "../../styled";
-//Styles
-import { Skt } from "../../Views/Line/styled";
-import { useTheme } from "styled-components";
+import { Skt, Area } from "../../Views/Line/styled";
+
+//Hooks
+import { useInternal } from "../../../../hooks/context";
 
 //Components
 import { Sort } from "../../Views/Sort";
@@ -41,18 +42,19 @@ export function ColGeneric<T extends { id: string }>({
   pagination,
   setPagination,
 }: Readonly<IColGenericProps<T>>) {
-  const theme = useTheme();
+  const internal = useInternal();
 
   return (
-    <S.Table className={className}>
-      <S.Thead>
-        <S.Tr $height={height}>
+    <S.Table className={className} internal={internal}>
+      <S.Thead internal={internal}>
+        <S.Tr $height={height} internal={internal}>
           {columns.map((column, key) => {
             const isSorted = pagination?.sortBy?.key === column.dataIndex;
             const sortBy = isSorted ? pagination?.sortBy?.order : undefined;
 
             return (
               <S.Th
+                internal={internal}
                 key={`table-column-${key}-tr-${column?.dataIndex}`}
                 $identifier={`table--column--${key}--${column.dataIndex}`}
                 className={`table--column--${key}--${column.dataIndex} ${
@@ -92,9 +94,10 @@ export function ColGeneric<T extends { id: string }>({
           })}
         </S.Tr>
       </S.Thead>
-      <S.Tbody>
+      <S.Tbody internal={internal}>
         {data?.map((item, index) => (
           <S.Tr
+            internal={internal}
             key={`table-row-${index}-tr-${item?.id}`}
             $height={height}
             $hover={hover === index}
@@ -116,7 +119,7 @@ export function ColGeneric<T extends { id: string }>({
                 ? column.tooltip.title(item)
                 : undefined;
 
-              const textStyles = column?.textStyle?.(item, theme) || {};
+              const textStyles = column?.textStyle?.(item, internal) || {};
               const statusStyles = column?.statusStyle?.(item) || {};
 
               const isLineLoading = loadingLines.includes(item.id);
@@ -127,15 +130,16 @@ export function ColGeneric<T extends { id: string }>({
 
               const CustomRender = () => {
                 return (
-                  <>
-                    <Skt loading={loading} />
+                  <Area>
+                    <Skt loading={isLoading} />
                     {custom}
-                  </>
+                  </Area>
                 );
               };
 
               return (
                 <S.Td
+                  internal={internal}
                   key={`table-column-${key}-${index}--${column.dataIndex}`}
                   $identifier={`table--column--${key}--${column.dataIndex}`}
                   className={`table--column--${key}--${column.dataIndex}`}
@@ -143,7 +147,7 @@ export function ColGeneric<T extends { id: string }>({
                   $width={column.width}
                   $height={height}
                 >
-                  {custom ? (
+                  {!!custom ? (
                     <CustomRender />
                   ) : (
                     <Component<T>
@@ -156,7 +160,7 @@ export function ColGeneric<T extends { id: string }>({
                           ? {
                               title: tooltip,
                               style: column.tooltip?.style
-                                ? column.tooltip?.style(item, theme)
+                                ? column.tooltip?.style(item, internal)
                                 : {},
                             }
                           : undefined

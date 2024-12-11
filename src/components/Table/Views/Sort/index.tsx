@@ -1,5 +1,6 @@
 //Styles
 import * as S from "./styled";
+import { useInternal } from "../../../../hooks/context";
 
 //Icons
 import { ChevronDown, ChevronUp } from "lucide-react";
@@ -9,8 +10,10 @@ export interface ISortProps {
 }
 
 export const Sort = ({ sortBy }: ISortProps) => {
+  const internal = useInternal();
+
   return (
-    <S.Box>
+    <S.Box internal={internal}>
       <ChevronUp
         size={14}
         strokeWidth={3}

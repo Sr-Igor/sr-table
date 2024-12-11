@@ -1,6 +1,9 @@
 //Styles
 import * as S from "../../styled";
 
+//Hooks
+import { useInternal } from "../../../../hooks/context";
+
 //Components
 import { Actions } from "../../Views/Actions";
 
@@ -22,25 +25,28 @@ export function ColActions<T extends { id: string }>({
   loading,
   loadingLines = [],
 }: Readonly<IColActionsProps<T>>) {
+  const internal = useInternal();
   return (
-    <S.Table className="table--stable">
-      <S.Thead>
-        <S.Tr $height={height}>
+    <S.Table className="table--stable" internal={internal}>
+      <S.Thead internal={internal}>
+        <S.Tr $height={height} internal={internal}>
           <S.Th
             $identifier={`table-actions-stable-th`}
             key={`table-actions-stable-th`}
             className={"column table--column--stable"}
+            internal={internal}
           >
             Ações
           </S.Th>
         </S.Tr>
       </S.Thead>
-      <S.Tbody>
+      <S.Tbody internal={internal}>
         {data?.map((item, index) => {
           const isLoading = loadingLines.includes(item?.id) || loading;
 
           return (
             <S.Tr
+              internal={internal}
               key={`table-actions-stable-${index}-tr-${item?.id}`}
               $height={height}
               style={{
@@ -50,6 +56,7 @@ export function ColActions<T extends { id: string }>({
               }}
             >
               <S.Td
+                internal={internal}
                 $height={height}
                 key={`table-actions-stable-${index}-td-${item?.id}`}
                 className={`table--column--stable`}

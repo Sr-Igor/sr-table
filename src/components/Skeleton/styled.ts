@@ -13,9 +13,9 @@ const gradient = keyframes`
 `;
 
 const SkeletonModifier = {
-  black: (theme: DefaultTheme) => css`
-    --color--1: ${theme.colors.loading.light};
-    --color--2: ${theme.colors.loading.strong};
+  black: (internal: DefaultTheme) => css`
+    --color--1: ${internal.colors.loading.light};
+    --color--2: ${internal.colors.loading.strong};
   `,
 };
 
@@ -33,8 +33,8 @@ const image = () => css`
 export const Skeleton = styled.div<{
   $loading?: boolean;
 }>`
-  ${({ theme, $loading }) => css`
-    ${SkeletonModifier["black"](theme)}
+  ${({ internal, $loading }) => css`
+    ${SkeletonModifier["black"](internal)}
 
     position: absolute;
     width: 100%;
@@ -42,7 +42,7 @@ export const Skeleton = styled.div<{
     z-index: 2;
 
     opacity: ${$loading ? 1 : 0};
-    transition: opacity ${theme.transition.default};
+    transition: opacity ${internal.transition.default};
     display: ${$loading ? "block" : "none"};
     ${image()}
   `}

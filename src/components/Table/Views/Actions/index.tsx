@@ -1,9 +1,9 @@
 //Styles
 import * as S from "./styled";
-import { ThemeProvider, useTheme } from "styled-components";
 
 //React && Hooks
 import { useMemo, useState } from "react";
+import { useInternal } from "../../../../hooks/context";
 
 //MUI
 import { Popover } from "@mui/material";
@@ -15,7 +15,7 @@ import { Ellipsis, ChevronRight } from "lucide-react";
 import { ActionsProps } from "../../types";
 
 export function Actions<T>({ item, actions }: Readonly<ActionsProps<T>>) {
-  const theme = useTheme();
+  const internal = useInternal();
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
   const allHidden = useMemo(
@@ -40,12 +40,12 @@ export function Actions<T>({ item, actions }: Readonly<ActionsProps<T>>) {
         }}
         sx={{
           ".MuiPaper-root": {
-            backgroundColor: theme.colors.background,
+            backgroundColor: internal.colors.background,
             borderRadius: "8px",
           },
         }}
       >
-        <S.Content>
+        <S.Content internal={internal}>
           {actions.map((action, index) => {
             const isHidden = action?.hide?.(item);
             if (isHidden) return null;

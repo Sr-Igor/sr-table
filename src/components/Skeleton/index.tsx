@@ -1,4 +1,8 @@
+//Styles
 import * as S from "./styled";
+
+//Hooks
+import { useInternal } from "../../hooks/context";
 
 type Div = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -11,5 +15,14 @@ export interface ISkeletonProps extends Div {
 }
 
 export const Skeleton = ({ loading, ...rest }: ISkeletonProps) => {
-  return <S.Skeleton $loading={loading} {...rest} data-testid="skeleton" />;
+  const internal = useInternal();
+
+  return (
+    <S.Skeleton
+      $loading={loading}
+      {...rest}
+      data-testid="skeleton"
+      internal={internal}
+    />
+  );
 };

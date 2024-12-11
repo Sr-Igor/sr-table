@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const Box = styled.div`
-  ${({ theme }) => css`
+  ${({ internal }) => css`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,7 +13,7 @@ export const Box = styled.div`
     .arrow {
       position: absolute;
       opacity: 0.3;
-      color: ${theme.colors.gray.strong};
+      color: ${internal.colors.gray.strong};
       transition: all 0.3s ease;
 
       &.top {

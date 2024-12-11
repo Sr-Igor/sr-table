@@ -14,22 +14,22 @@ export const Box = styled.div`
 `;
 
 export const Container = styled.label<{ $checked: boolean }>`
-  ${({ theme, $checked }) => css`
+  ${({ internal, $checked }) => css`
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 16px;
     height: 16px;
     border-radius: 3px;
-    border: 2px solid ${theme.colors.gray.light};
+    border: 2px solid ${internal.colors.gray.light};
     cursor: pointer;
     position: absolute;
-    background-color: ${theme.colors.background};
+    background-color: ${internal.colors.background};
 
     ${$checked &&
     css`
-      border-color: ${theme.colors.checkbox};
-      background-color: ${theme.colors.checkbox};
+      border-color: ${internal.colors.checkbox};
+      background-color: ${internal.colors.checkbox};
     `}
 
     input {
@@ -41,9 +41,9 @@ export const Container = styled.label<{ $checked: boolean }>`
     }
 
     .lbl--check {
-      font-size: ${theme.font.size.xxsmall};
-      color: ${theme.colors.gray.strong};
-      margin-left: ${theme.spacings.xxxsmall};
+      font-size: ${internal.font.size.xxsmall};
+      color: ${internal.colors.gray.strong};
+      margin-left: ${internal.spacings.xxxsmall};
       white-space: nowrap;
     }
   `}

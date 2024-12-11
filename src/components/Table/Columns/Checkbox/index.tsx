@@ -3,6 +3,7 @@ import * as S from "../../styled";
 
 //React && Hooks
 import { useMemo } from "react";
+import { useInternal } from "../../../../hooks/context";
 
 //Components
 import { Input } from "./Input";
@@ -27,6 +28,8 @@ export function ColCheckbox<T extends Readonly<{ id: string }>>({
   selects,
   setSelects,
 }: Readonly<IColActionsProps<T>>) {
+  const internal = useInternal();
+
   const someIsLoading = loadingLines.length > 0 || loading;
 
   const handleSelect = (id: string) => {
@@ -61,9 +64,10 @@ export function ColCheckbox<T extends Readonly<{ id: string }>>({
   };
 
   return (
-    <S.Table className="table--stable">
-      <S.Thead>
+    <S.Table className="table--stable" internal={internal}>
+      <S.Thead internal={internal}>
         <S.Tr
+          internal={internal}
           $height={height}
           style={{
             opacity: someIsLoading ? 0.3 : 1,
@@ -72,6 +76,7 @@ export function ColCheckbox<T extends Readonly<{ id: string }>>({
           }}
         >
           <S.Th
+            internal={internal}
             $identifier={`table--column--stable--th`}
             key={`table-checkbox-stable-th`}
             className={"column table--column--stable"}
@@ -80,12 +85,13 @@ export function ColCheckbox<T extends Readonly<{ id: string }>>({
           </S.Th>
         </S.Tr>
       </S.Thead>
-      <S.Tbody>
+      <S.Tbody internal={internal}>
         {data?.map((item, index) => {
           const isLoading = loadingLines.includes(item?.id) || loading;
 
           return (
             <S.Tr
+              internal={internal}
               key={`table-checkbox-stable-${index}-tr-${item?.id}`}
               $height={height}
               style={{
@@ -95,6 +101,7 @@ export function ColCheckbox<T extends Readonly<{ id: string }>>({
               }}
             >
               <S.Td
+                internal={internal}
                 $height={height}
                 $identifier={`table--column--stable`}
                 key={`table-checkbox-stable-${index}-td-${item?.id}`}

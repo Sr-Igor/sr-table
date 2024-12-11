@@ -1,6 +1,6 @@
 {
   "name": "sr-table",
-  "version": "1.0.13",
+  "version": "1.0.15",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.es.js",

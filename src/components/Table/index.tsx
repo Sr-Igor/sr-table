@@ -4,6 +4,7 @@ import * as S from "./styled";
 
 //React && Hooks
 import { useMemo, useState } from "react";
+import { useInternal } from "../../hooks/context";
 
 //Components
 import { Pagination } from "../Pagination";
@@ -30,6 +31,8 @@ export function Table<T extends { id: string }>({
   pagination = { page: 1 },
   onClickRow,
 }: Readonly<ITableProps<T>>) {
+  const internal = useInternal();
+
   //Data manipulation
   const _LINE_HEIGHT = 30;
   const ld = Array.from({ length: 10 }).map(() => ({})) as T[];
@@ -48,8 +51,8 @@ export function Table<T extends { id: string }>({
   // --------------------- RENDER --------------------- //
   return (
     <>
-      <S.Wrapper {...wrapperProps}>
-        <S.Area>
+      <S.Wrapper {...wrapperProps} internal={internal}>
+        <S.Area internal={internal}>
           {selects && setSelects && (
             <ColCheckbox
               data={items}
@@ -77,7 +80,7 @@ export function Table<T extends { id: string }>({
             />
           )}
 
-          <S.Scrollable>
+          <S.Scrollable internal={internal}>
             <div className="scroll">
               <ColGeneric
                 data={items}
@@ -124,7 +127,7 @@ export function Table<T extends { id: string }>({
 
         {/* Empty State */}
         {!loading && items.length <= 0 && (
-          <S.Empty>
+          <S.Empty internal={internal}>
             {!!emptyImageProps && (
               <div className="image--box">
                 <img {...emptyImageProps} />
@@ -148,7 +151,7 @@ export function Table<T extends { id: string }>({
       </S.Wrapper>
       {/* Pagination */}
       {!!setPagination && (
-        <S.Footer>
+        <S.Footer internal={internal}>
           <p className="footer-total">
             Total <strong>{count}</strong>
           </p>
