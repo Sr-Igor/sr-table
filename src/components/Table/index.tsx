@@ -27,6 +27,7 @@ export function Table<T extends { id: string }>({
   setPagination,
   loading = false,
   emptyImageProps,
+  visible = 10,
   loadingLines = [],
   pagination = { page: 1 },
   onClickRow,
@@ -35,8 +36,14 @@ export function Table<T extends { id: string }>({
 
   //Data manipulation
   const _LINE_HEIGHT = 30;
-  const ld = Array.from({ length: 10 }).map(() => ({})) as T[];
-  const items = loading ? ld : data;
+  const ld = Array.from({ length: visible }).map(() => ({})) as T[];
+  const items = useMemo(() => {
+    const dft = loading ? ld : data;
+    if (dft.length <= visible) return dft;
+    const start = ((pagination.page || 0) - 1) * visible;
+    const end = start + visible;
+    return dft.slice(start, end);
+  }, [data, visible, pagination.page]);
 
   //Columns Split
   const _columns = useMemo(() => {
