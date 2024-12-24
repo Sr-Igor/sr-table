@@ -43,7 +43,7 @@ export function Table<T extends { id: string }>({
     const start = ((pagination.page || 0) - 1) * visible;
     const end = start + visible;
     return dft.slice(start, end);
-  }, [data, visible, pagination.page]);
+  }, [data, visible, pagination.page, loading]);
 
   //Columns Split
   const _columns = useMemo(() => {
